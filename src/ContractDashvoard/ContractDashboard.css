@@ -1,0 +1,134 @@
+/* ContractDashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;0,900;1,900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Merriweather', serif;
+
+}
+.dashboard-container {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+   
+  }
+  
+  .sidebar {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px;
+    height: 100%;
+  }
+  
+  .sidebar-button {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  h5 {
+    color: #495057;
+  }
+  
+  /* Add spacing between table columns */
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #343a40;
+    color: #ffffff;
+  }
+  
+  td {
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  /* Add margin to action buttons */
+  td .btn {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .edit-button {
+    background-color: #28a745; /* Green color */
+    border-color: #28a745;
+  }
+  
+  .delete-button {
+    background-color: #dc3545; /* Red color */
+    border-color: #dc3545;
+    margin-left: 5px; /* Add some spacing between Edit and Delete buttons */
+  }
+  
+  .edit-button:hover,
+  .delete-button:hover {
+    background-color: #218838; /* Darker green on hover for Edit button */
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333; /* Darker red on hover for Delete button */
+  }
+  .modal-content {
+    border-radius: 10px;
+  }
+  
+  /* Style for the modal header */
+  .modal-header {
+    background-color: #007bff; /* Blue color for the header */
+    color: #ffffff;
+    border-bottom: none;
+  }
+  
+  /* Style for the modal title */
+  .modal-title {
+    margin-right: auto; /* Align title to the left */
+  }
+  
+  /* Style for the modal body */
+  .modal-body {
+    padding: 20px;
+  }
+  
+  /* Style for the form inside the modal */
+  .modal-body form {
+    margin-bottom: 0; /* Remove default bottom margin */
+  }
+  
+  /* Style for form labels */
+  .modal-body label {
+    font-weight: bold;
+  }
+  
+  /* Style for the modal footer */
+  .modal-footer {
+    border-top: none;
+  }
+  
+  /* Style for the Close button in the footer */
+  .modal-footer .btn-secondary {
+    background-color: #6c757d; /* Gray color for the Close button */
+  }
+  
+  /* Style for the Add Contract button in the footer */
+  .modal-footer .btn-primary {
+    background-color: #28a745; /* Green color for the Add Contract button */
+  }
