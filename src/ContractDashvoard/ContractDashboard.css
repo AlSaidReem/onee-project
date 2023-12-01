@@ -1,20 +1,27 @@
 /* ContractDashboard.css */
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;0,900;1,900&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Merriweather', serif;
+.back{
+  height:50vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.377), rgba(4, 9, 30, 0.342)),url(../images/bg_green.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;}
 
+
+.back h1{
+  text-align: center;
+  color: #ffffff;
+  font-weight: bolder;
+ 
 }
-.dashboard-container {
-    background-color: #f8f9fa;
-    min-height: 100vh;
-   
-  }
-  
+
+
   .sidebar {
-    background-color: #343a40;
+    /* background-color: #343a40; */
     color: #ffffff;
     padding: 20px;
     height: 100%;
@@ -27,6 +34,7 @@
   
   .main-content {
     padding: 20px;
+    width: 100%;
   }
   
   .card {
@@ -47,9 +55,9 @@
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
-  }
+  } */
   
-  th, td {
+   th, td {
     padding: 12px;
     text-align: left;
   }
@@ -57,26 +65,31 @@
   th {
     background-color: #343a40;
     color: #ffffff;
+    padding: 20px;
   }
   
   td {
     border-bottom: 1px solid #dee2e6;
-  }
+  
+  } 
   
   /* Add margin to action buttons */
   td .btn {
     margin-right: 5px;
     margin-bottom: 5px;
+    margin-top: 30px;
   }
   .edit-button {
     background-color: #28a745; /* Green color */
     border-color: #28a745;
+    margin-left: 30px;
+
   }
   
   .delete-button {
     background-color: #dc3545; /* Red color */
     border-color: #dc3545;
-    margin-left: 5px; /* Add some spacing between Edit and Delete buttons */
+    margin-left: 30px; /* Add some spacing between Edit and Delete buttons */
   }
   
   .edit-button:hover,
@@ -132,3 +145,30 @@
   .modal-footer .btn-primary {
     background-color: #28a745; /* Green color for the Add Contract button */
   }
+
+
+/* Add this to your existing styles or create a new CSS file */
+.players{
+  padding: 50px;
+}
+.contracts-table {
+  width: 100%;
+  
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.contracts-table th, .contracts-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.contracts-table th {
+  background-color: #343a40;
+}
+
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}

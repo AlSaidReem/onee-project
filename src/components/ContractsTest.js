@@ -50,37 +50,44 @@ function ContractsTest() {
         };
       }, []);
     
-    
-      const handleSaveToFirebase = () => {
-        // Check if all input fields are filled
-        if (
-        
-          !contractData.email ||
-          !contractData.playerName ||
-          !contractData.phoneNumber 
-        ) {
-          setValidationError('Please fill in all fields');
-          return;
-        }
-    
-        const contractsRef = ref(database, 'contracts/players');
-    
-        push(contractsRef, contractData)
-          .then(() => {
-            alert('Data saved to Firebase!');
-            setContractData({
-              email: '',
-              playerName: '',
-              phoneNumber: '',
-              contractContent: '',
-            });
-            window.location.href ='/showcotracts'
-            setValidationError('');
-          })
-          .catch((error) => {
-            console.error('Error saving data to Firebase:', error);
-          });
-      };
+
+const handleSaveToFirebase = () => {
+  
+  if (!contractData.email || !contractData.playerName || !contractData.phoneNumber) {
+    setValidationError('Please fill in all fields');
+    return;
+  }
+
+  const storedEmail = sessionStorage.getItem('email');
+  if (contractData.email !== storedEmail) {
+    setValidationError('Please enter a valid email !');
+    return;
+  }
+
+  const contractsRef = ref(database, 'contracts/players');
+
+  push(contractsRef, contractData)
+    .then((newRef) => {
+      const newKey = newRef.key; 
+
+      sessionStorage.setItem('playerName', contractData.playerName);
+      sessionStorage.setItem('playerKey', newKey);
+
+      alert('Your request is sent to the admin !');
+      setContractData({
+        email: '',
+        playerName: '',
+        phoneNumber: '',
+        contractContent: '',
+      });
+      window.location.href = '/';
+      setValidationError('');
+    })
+    .catch((error) => {
+      console.error('Error saving data to Firebase:', error);
+    });
+};
+
     
   return (
     <>
@@ -129,7 +136,7 @@ function ContractsTest() {
             </div>
           
             <div className="app-form-group buttons" >
-              <button className="app-form-button" ><a href='/contracts'>CANCEL</a></button>
+              <button className="app-form-button" ><a href='/'>CANCEL</a></button>
               <br/>
               <br/>
               <button className="app-form-button" onClick={handleSaveToFirebase}>SEND</button>

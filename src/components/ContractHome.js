@@ -1,9 +1,37 @@
-import React from 'react'
-import '../styles/contractHome.css'
+import {React,useState, useEffect} from 'react'
+import '../styles/contractHome.css';
 
 
 
 function ContractHome() {
+
+const [Contact_1, setContactOne] = useState('');
+const [Contact_2, setContactTwo] = useState('');
+const [Contact_3 , setContactThree] = useState('');
+
+  
+const handleButtonClick = (contactName) => {
+    // Handle button click and set the corresponding state
+    switch (contactName) {
+      case 'Contact_1':
+        setContactOne('value for contactOne');
+        break;
+      case 'Contact_2':
+        setContactTwo('value for contactTwo');
+        break;
+      case 'Contact_3':
+        setContactThree('value for contactThree');
+        break;
+      default:
+        break;
+    }
+  
+    // Save the button name in sessionStorage
+    sessionStorage.setItem('selectedContact', contactName);
+  };
+  
+
+
   return (
     <>
    
@@ -11,7 +39,7 @@ function ContractHome() {
         <div className='flexes'>
             <div className='leftFlex'>
             <div className="cards">
-                
+
                 <article className="plan [ card ]" style={{backgroundColor:"#00a8e8"}}>
                     <div className="inner" style={{backgroundColor:"#e9ecef"}}>
             
@@ -51,20 +79,23 @@ function ContractHome() {
                                 <span>File sharing</span>
                             </li>
                         </ul>
-                        <button className="button"style={{backgroundColor:"#00a8e8"}}>
-                        <a href='/Contracts'>  Choose plan</a>
+                        <button className="button"style={{backgroundColor:"#00a8e8"}} 
+                         onClick={() => handleButtonClick('Contact_1')}>
+                        <a href='/contractstest'>  Choose plan</a>
                         </button>
-                    </div>
-                </article>
-                        </div>
-        
+                      </div>
+                   </article>
+                </div>
             </div>
+
+
+
             <div className='middleFlex'>
             <div className="cards">
-                
+
                 <article className="plan [ card ]"  style={{backgroundColor:"red"}}>
                     <div className="inner" style={{backgroundColor:"#e9ecef"}} >
-            
+                
                         <span className="pricing" style={{backgroundColor:"red"}}>
                             <span>
                                 $75<small>/ m</small>
@@ -101,17 +132,23 @@ function ContractHome() {
                                 <span>File sharing</span>
                             </li>
                         </ul>
-                        <button className="button" style={{backgroundColor:"red"}}>
+                        <button className="button" style={{backgroundColor:"red"}} 
+                         onClick={() => handleButtonClick('Contact_2')}>
                         <a href='/contractstest'>  Choose plan</a>
                         </button>
                     </div>
                 </article>
                         </div>
             </div>
+
+
+
+
+
             <div className='rightFlex'>
             <div className="cards">
-                
             
+
             <article className="plan [ card ]" style={{backgroundColor:"#80ed99"}}>
                     <div className="inner" style={{backgroundColor:"#e9ecef"}}>
             
@@ -151,15 +188,16 @@ function ContractHome() {
                                 <span>File sharing</span>
                             </li>
                         </ul>
-                       <button className="button" style={{backgroundColor:"#80ed99"}}>
-                       <a href='/Contracts'>  Choose plan</a>
+                       <button className="button" style={{backgroundColor:"#80ed99"}} 
+                       onClick={() => handleButtonClick('Contact_3')}>
+                       <a href='/contractstest'>  Choose plan</a>
                         </button>
                     </div>
                 </article>
                         </div>
             </div>
         </div>
-       
+
     </div>
 
     </>

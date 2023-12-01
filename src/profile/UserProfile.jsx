@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getDatabase, ref, onValue } from 'firebase/database';
 import '../profile/profile.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -7,12 +8,10 @@ function EditPopup({ onClose, onSave }) {
   const [newPassword, setNewPassword] = useState('');
 
   const handleSave = () => {
-   
     sessionStorage.setItem('email', newEmail);
     sessionStorage.setItem('pass', newPassword);
 
     onSave();
-
     onClose();
   };
 
@@ -31,6 +30,37 @@ function EditPopup({ onClose, onSave }) {
 
 function UserProfile() {
   const [isEditPopupVisible, setEditPopupVisible] = useState(false);
+  const [playerData, setPlayerData] = useState([]); 
+
+  const savedKey = sessionStorage.getItem('savedKey');
+  const database = getDatabase();
+
+  useEffect(() => {
+    const contractsRef = ref(database, 'contracts/players');
+
+    onValue(contractsRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        const playersArray = Object.keys(data).map((key) => ({
+          id: key,
+          ...data[key],
+        }));
+
+        // Filter the players based on the saved key
+        const filteredPlayers = playersArray.filter(
+          (player) => player.id === savedKey
+        );
+
+        setPlayerData(filteredPlayers);
+      } else {
+        setPlayerData([]);
+      }
+    });
+
+    return () => {
+     
+    };
+  }, [database, savedKey]);
 
   const handleEditClick = () => {
     setEditPopupVisible(true);
@@ -43,6 +73,24 @@ function UserProfile() {
   const handleSaveEditPopup = () => {
     console.log('Changes saved');
   };
+
+
+
+  const [playerName, setPlayerName] = useState('');
+  const [playerKey, setPlayerKey] = useState('');
+  const [selectedContact, setSelectedContact] = useState('');
+
+  useEffect(() => {
+    // Retrieve values from sessionStorage
+    const storedPlayerName = sessionStorage.getItem('playerName');
+    const storedPlayerKey = sessionStorage.getItem('playerKey');
+    const storedSelectedContact = sessionStorage.getItem('selectedContact');
+
+    // Update state with retrieved values
+    setPlayerName(storedPlayerName);
+    setPlayerKey(storedPlayerKey);
+    setSelectedContact(storedSelectedContact);
+  }, []);
 
   return (
     <>
@@ -66,8 +114,33 @@ function UserProfile() {
         <EditPopup onClose={handleCloseEditPopup} onSave={handleSaveEditPopup} />
       )}
       </section>
+
+
+      <section className='table'>
+        <h2> Your Contracts </h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Player Key</th>
+              <th>Player Name</th>
+              <th>Selected Contact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{playerKey}</td>
+              <td>{playerName}</td>
+              <td>{selectedContact}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+     
     </>
   );
 }
 
 export default UserProfile;
+
+

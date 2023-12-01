@@ -59,7 +59,7 @@ function Home() {
      <h1> Become a legendary power with us </h1>
    
       <div><DateTime/></div>
-     <button> <a href='/last-brief/src/contract'> Contracts  </a> </button>
+     <button> <a href='/contracthome'> Contracts  </a> </button>
    </section>
 
 
@@ -99,7 +99,7 @@ function Home() {
 			<div className="row">
 				<div className="col-lg-12">
 					<div className="title-box">
-						<h2>Gallery</h2>
+						<h2>Team Gallery</h2>
 					</div>
 				</div>
 			</div>

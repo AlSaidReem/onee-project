@@ -138,5 +138,18 @@
   .profile-container .popup-visible {
     background-color: rgba(0, 0, 0, 0.5);
   }
+.table{
+  height: 50vh;
+  padding: 100px;
+}
+.table h2{
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bolder;
+  color: #7ED957;
 
+}
+.table th{
+  background-color: #08162c;
+}
   

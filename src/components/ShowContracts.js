@@ -31,6 +31,7 @@ function ShowContracts() {
     
       const [validationError, setValidationError] = useState('');
       const [contractsList, setContractsList] = useState([]);
+      
       useEffect(() => {
         const contractsRef = ref(database, 'contracts/players');
     
